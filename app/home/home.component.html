@@ -1,0 +1,77 @@
+<app-navbar (childEvent)="this.blogs=$event"></app-navbar>
+<div>
+  <div style="padding: 0px;" id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+
+        <div class="carousel-caption" style="padding-top: 60px;">
+          <h1 style="color:white;font-weight:900;font-family: sans-serif;font-max-size: xx-large;padding-bottom: 10px;border: solid darkred 6px;"routerLink="/home">BLOGFROG</h1>
+          <h5>Publish your passions, your way </h5>
+          <h5>Create a unique and beautiful blog. It’s easy and free.</h5>
+          <button type="button" class="btn btn-primary btn-lg" routerLink="/addblog">Create your Blog</button>
+          <p style="padding-bottom: 400px;padding-top: 20px">Don't think twice,Hit the Button</p>
+        </div>
+
+        <video class="video-fluid" autoplay loop muted>
+          <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+    <!--/.Slides-->
+  </div>
+  <!--Carousel Wrapper-->
+  <div style="background-color: darkred;margin: 0px;">
+    <h2 style="color: whitesmoke;">Or,<br> Directly check some of the trending <br> blogging profiles.</h2>
+  </div>
+  <div class="container"style="margin-top: 0px;background-color: indianred;">
+    <div class="row" style="margin-top: 0px;">
+      <div class="col-lg-9">
+        <div class="card"style="border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px darkred;">
+          <div>
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="email" [(ngModel)]="searchedItem" class="form-control-file mt-5 ml-4" id="email" placeholder="Enter User" name="email">
+              </div>
+              <button  class="btn btn-info mt-5" (click)="searchUser()">Search</button>
+            </form>
+            <div class="mt-3 mb-3 text-center"><h4>{{user.name}}</h4></div>
+            <button style="margin-left: 300px;" class="btn btn-primary active" (click)="seeFollowers()">Followers</button>
+            <button style="margin-left: 80px;" class="btn btn-warning active" (click)="seeFollowing()">Following</button>
+          </div>
+        </div>
+        <div class="col-12 mt-5 ">
+          <div class="row">
+            <div class="col-sm-12 mb-3 card" *ngFor="let f of getUser">
+              <div class="bg-white m-2 p-3 mt-4" style="background-color: #00c6ff">
+                <div class="d-flex">
+                  <div>
+                    <div>
+                      <b>{{f.name}}</b>
+                    </div>
+                    <small>{{f.role}}</small>
+                  </div>
+                  <div class="ml-auto">
+                    <button class="btn btn-primary btn-sm" (click)="viewProfile(f.userId)">View Profile</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+       <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

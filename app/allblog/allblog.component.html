@@ -1,0 +1,23 @@
+<app-navbar (childEvent)="this.blogs=$event"></app-navbar>
+<div class="card" style="background-color:mintcream;border:  1px solid lightgray; border-radius:1rem;font-size: medium;display: -ms-flexbox">
+  <div class="card-text" *ngFor="let b of blogs"  style="margin-top: 30px;margin-left: 30px ;margin-bottom:30px" >
+    <div class="card-body" style="background-color: darkslateblue;color: mintcream;">
+      <div>
+        <div>
+          <h3><span class="badge badge-secondary">O</span></h3>
+          <div style="font-size: 40px; font-family: SansSerif">{{b.title}}</div>
+          <small class="ml-5">By {{b.author}}</small>
+        </div>
+        <div class="ml-5">
+          <div>
+            <small class="text-light">{{b.date | date:'shortDate'}}</small>
+          </div>
+        </div>
+      </div>
+      <hr style="color: #00c6ff">
+      <p class="pb-3">{{b.content}}</p>
+      <button class="btn btn-success mb-3" routerLink="/profile" (click)="deleteBlog(b.blogId)">Delete Blog</button>
+
+    </div>
+  </div>
+</div>

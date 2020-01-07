@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row" style="margin-left: 30px;margin-top: 100px;">
+    <div class="col-md-4">
+      <div class="form_main">
+        <h2 style="color: crimson"><strong>Add Blog</strong><span></span></h2>
+        <div class="form" style="background-color: lightgray">
+          <form class="form-group" style="margin-left: 13px;font-size: medium;">
+            <label style="color: crimson;margin-left: 13px;">Post Title*</label><br>
+            <input type="text" [(ngModel)]="blog.title" placeholder="Heading" value="" name="name" class="txt"><br>
+           <hr>
+            <label style="color: crimson;margin-left: 13px;">Post Body//</label>
+            <textarea placeholder="|Your Blog Content here|" name="mess" [(ngModel)]="blog.content" type="text" class="form-control txt"></textarea>
+            <br>
+            <button style="margin-left: 115px;margin-bottom: 30px;" (click)="addBlog() " class="btn btn-warning mt-2">Pushh</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

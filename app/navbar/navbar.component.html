@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<nav class="navbar navbar-expand-lg navbar-light btn-danger col-sm-12" style="margin:0;">
+  <div class=" navbar-nav" id="navb">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" style="color: navajowhite;font-weight: bolder;font-family:'Script MT Bold';font-size: xx-large" href="home">BlogFrog</a>
+    </ul>
+    <form class="form-inline my-5 my-lg-0"style="margin-left: 230px">
+      <input class="form-control mr-sm-2" name="search" type="text" [(ngModel)]="searchedItem" size="50" placeholder="Type here toSearch" >
+      <button class="btn btn-success my-1 my-sm-0" type="button" (click)="searchOnClick()"> Search</button>
+    </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" *ngIf="!loginService.isUserLoggedIn()">
+        <a class="nav-link dropdown-toggle ml-1" data-toggle="dropdown" href="#" id="navbardrop">
+          Lets Start</a>
+        <div class="dropdown-menu bg-dark">
+          <a class="nav-link bg-dark dropdown-item" href="login" routerLink="/login">Login</a>
+          <a class="nav-link bg-dark dropdown-item" href="register" routerLink="/register">Sign Up</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="loginService.isUserLoggedIn()">
+        <button class="btn btn-warning my-1 my-sm-0" style="margin-left: 200px;" type="button"  routerLink="/addblog">Blog</button>
+      </li>
+
+      <li class="nav-item" *ngIf="loginService.isUserLoggedIn()">
+        <button class="btn btn-secondary my-1 my-sm-0" routerLink="/myaccount">MyProfile</button>
+      </li>
+      <li class="nav-item" *ngIf="loginService.isUserLoggedIn()">
+        <button class="btn btn-primary my-1 my-sm-0" routerLink="login">Log Out</button>
+      </li>
+      <li class="nav-item" *ngIf="loginService.isUserLoggedIn()">
+        <button class="btn btn-warning my-1 my-sm-0"  type="button"  routerLink="/allblog">AllBlog</button>
+      </li>
+      <li class="nav-item" *ngIf="loginService.isUserLoggedIn() && this.role=='Moderator'">
+        <a class="nav-link" href="/allblog">Show All Blogs</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<app-navbar ></app-navbar>
+<div style="background-color: lightgreen">
+<div class="container"  style="background-color: lightgreen">
+  <div class="row" style="margin-top: 0px;padding-top: 40px">
+    <div class="col-4">
+      <div class=" mb-4" style="padding-right: 60px; padding-left: 10px;">
+        <div class="card" style="width: 400px;">
+          <div class="card-deck bg-light">
+            <div style="margin-left: 100px;">
+              <h2 style="margin-left: -50px;" class="font1">{{viewUser.name}}</h2>
+              <small class="text-center text-muted">{{viewUser.role}}</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <b class="mt-3">Email</b>
+            <span class="ml-5">{{viewUser.email}}</span>
+            <br>
+            <div class="mt-4">
+              <b>Email</b>
+              <span class="ml-5">{{viewUser.name}}</span><br>
+            </div>
+            <button class="btn btn-warning mt-3 mb-3" style="margin-left: 85px" routerLink="/myaccount">Edit Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-sm-8">
+        <div class="card" style="margin-left:40px;background-color:mintcream;border:  1px solid lightgray; border-radius:1rem;font-size: medium;display: -ms-flexbox">
+          <div class="card-text" *ngFor="let b of blog"  style="margin-top: 30px;margin-left: 30px ;margin-bottom:30px" >
+            <div class="card-body" style="background-color: darkslateblue;color: mintcream;">
+              <div class="d-flex">
+                <div>
+                  <div style="font-size: 20px;">{{b.title}}</div>
+                  <div class="font-weight text-black-50">{{blog.title}}</div>
+                </div>
+                <div class="ml-auto">
+                  <div>
+                    <small class="text-dark">{{b.date | date:'shortDate'}}</small>
+                  </div>
+                </div>
+              </div>
+              <hr style="color: #00c6ff">
+              <p class="pb-3">{{b.content}}</p>
+              <small *ngIf="b.private=='false'"><a (click)="makePrivate(b.blogId)">Make it Private</a></small>
+              <small *ngIf="b.private=='true'"><a (click)="makePublic(b.blogId)">Make it Public</a></small>
+              <small class="text-warning" ><button class="btn-warning" (click)="editBlog(b)">Edit Blog</button></small>
+              <small style="margin-right: 20px; color: lightgreen" class="ml-5"><a (click)="viewPost(b.blogId)">comment</a></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
